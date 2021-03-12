@@ -1,0 +1,67 @@
+.min-line {
+    // display: block;
+    // width: 100%;
+    background-color: #dcdfe6;
+    // background-color: red;
+    position: relative;
+
+    &-horizontal {
+        height: 1px;
+        width: 100%;
+        margin: 15px 0;
+        // background-color: #dcdfe6;
+        // display: block;
+    }
+
+    &-vertical {
+        width: 1px;
+        display: inline-block;
+        margin: 0 10px;
+        height: 1em;
+        vertical-align: middle;
+
+        .is-top {
+            top: 20%;
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        .is-center {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .is-bottom {
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            // transform: translateY(-50%);
+        }
+    }
+
+    &-content {
+        position: absolute;
+        background-color: #fff;
+        padding: 0 10px;
+        color: #86868b;
+        font-size: 14px;
+        z-index: 10;
+
+        &.is-left {
+            left: 50px;
+            transform: translateY(-50%);
+        }
+
+        &.is-center {
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        &.is-right {
+            right: 50px;
+            transform: translateY(-50%);
+        }
+
+    }
+}

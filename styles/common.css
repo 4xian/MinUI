@@ -1,0 +1,36 @@
+.clearfix::after {
+    clear: both;
+    display: block;
+    content: '';
+}
+
+.has-underline {
+    text-decoration: underline;
+}
+
+.has-bold {
+    font-weight: bold;
+}
+
+.has-text,
+.has-text:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.min-icon-close {
+    border-radius: 50% 50%;
+    text-align: center;
+    cursor: pointer;
+    font-size: inherit;
+    box-sizing: border-box;
+    padding: 2px 4px;
+    /* line-height: 16px; */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.min-icon-close:hover {
+    background-color: red;
+    color: #fff;
+}

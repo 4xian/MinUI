@@ -1,0 +1,29 @@
+@import '../styles/button.css';
+@import '../styles/tag.css';
+@import '../styles/common.css';
+@import '../styles/link.css';
+@import '../styles/mark.css';
+@import '../styles/textTip.css';
+@import '../styles/line.css';
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Apple';
+    letter-spacing: 1px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+
+@font-face {
+    font-family: Apple;
+    src: url('../fonts/sf-pro-display_regular.woff2'), ;
+    src: url("../fonts/appleMedium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Apple;
+    src: url('../fonts/sf-pro-display_semibold.woff2');
+    font-weight: bold;
+}

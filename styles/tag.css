@@ -1,0 +1,81 @@
+.min-tag {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #dcdcdc;
+    font-family: 'Apple';
+    background-color: #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+    margin: 3px;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tag-type-blue {
+    color: #007aff;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.tag-type-red {
+    color: #ff3b30;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.tag-type-info {
+    color: #17a2b8;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.tag-type-yellow {
+    color: #ff9500;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.tag-type-green {
+    color: #1aaf33;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.tag-simple-default {
+    border-color: #999;
+    color: #666;
+    background-color: #fff;
+}
+
+.tag-simple-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
+    background-color: #fff;
+}
+
+.tag-simple-blue {
+    border-color: #3d97f8;
+    color: #007aff;
+    background-color: #fff;
+}
+
+.tag-simple-red {
+    background-color: #fff;
+    border-color: #ff3b30;
+    color: #ff3b30;
+}
+
+.tag-simple-green {
+    background-color: #fff;
+    border-color: #1aaf33;
+    color: #1aaf33;
+}
+
+.tag-simple-yellow {
+    background-color: #fff;
+    border-color: #ff9500;
+    color: #ff9500;
+}

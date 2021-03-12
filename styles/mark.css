@@ -1,0 +1,26 @@
+.min-mark {
+    position: relative;
+    color: #fff;
+}
+
+.min-mark-item {
+    position: absolute;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    z-index: 2;
+    padding: 0 3px 1px 4px;
+    right: 10px;
+    font-size: 12px;
+    top: 0;
+    transform: translateY(-30%) translateX(100%);
+}
+
+.min-mark-item.has-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    padding: 0;
+    right: 8px;
+}

@@ -1,0 +1,22 @@
+.min-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 3px;
+    padding: 2px;
+    background: transparent;
+    color: #007aff;
+    position: relative;
+}
+
+.has-underline:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    bottom: 0;
+    border-bottom: 1px solid #007aff;
+}
