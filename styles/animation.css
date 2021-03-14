@@ -1,0 +1,109 @@
+.text-tip-animation,
+.texttip-opacity-enter-active {
+  -webkit-animation: open-texttip-opacity 0.5s;
+          animation: open-texttip-opacity 0.5s;
+}
+
+.texttip-opacity-leave-active {
+  -webkit-animation: close-texttip-opacity 0.5s;
+          animation: close-texttip-opacity 0.5s;
+}
+
+@-webkit-keyframes open-texttip-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes open-texttip-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes close-texttip-opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes close-texttip-opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.modal-fade-enter-active {
+  -webkit-animation: open-modal-opacity 0.5s;
+          animation: open-modal-opacity 0.5s;
+}
+
+.modal-fade-leave-active {
+  -webkit-animation: close-modal-opacity .5s;
+          animation: close-modal-opacity .5s;
+}
+
+@-webkit-keyframes open-modal-opacity {
+  0% {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes open-modal-opacity {
+  0% {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes close-modal-opacity {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes close-modal-opacity {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(0, -20px, 0);
+            transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=animation.css.map */

@@ -6,8 +6,7 @@
 .min-mark-item {
   position: absolute;
   border-radius: 12px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
   text-align: center;
   z-index: 2;
@@ -15,8 +14,7 @@
   right: 10px;
   font-size: 12px;
   top: 0;
-  -webkit-transform: translateY(-30%) translateX(100%);
-          transform: translateY(-30%) translateX(100%);
+  transform: translateY(-30%) translateX(100%);
 }
 
 .min-mark-item.has-dot {
@@ -26,4 +24,3 @@
   padding: 0;
   right: 8px;
 }
-/*# sourceMappingURL=mark.css.map */

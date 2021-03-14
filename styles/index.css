@@ -5,6 +5,8 @@
 @import '../styles/mark.css';
 @import '../styles/textTip.css';
 @import '../styles/line.css';
+@import '../styles/modal.css';
+@import '../styles/animation.css';
 
 body {
     margin: 0;

@@ -1,16 +1,11 @@
 .min-line {
-    // display: block;
-    // width: 100%;
     background-color: #dcdfe6;
-    // background-color: red;
     position: relative;
 
     &-horizontal {
         height: 1px;
         width: 100%;
         margin: 15px 0;
-        // background-color: #dcdfe6;
-        // display: block;
     }
 
     &-vertical {

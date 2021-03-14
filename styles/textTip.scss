@@ -1,0 +1,82 @@
+.min-text-tip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.min-text-tip-item {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #333;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #fff;
+    padding: 6px;
+    z-index: 1000;
+    word-break: keep-all;
+}
+
+.min-text-tip-item.is-top {
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.min-text-tip-item.is-bottom {
+    bottom: 0;
+    transform: translateY(100%);
+}
+
+.min-text-tip-item.is-left {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.min-text-tip-item.is-right {
+    right: 0;
+    transform: translateX(100%);
+}
+
+
+.min-text-tip-item::after {
+    content: '';
+    position: absolute;
+    font-size: 16px;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+}
+
+.min-text-tip-item.is-top::after {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: #333;
+}
+
+.min-text-tip-item.is-bottom::after {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: #333;
+
+}
+
+.min-text-tip-item.is-left::after {
+    bottom: 50%;
+    transform: translateX(50%) translateY(50%);
+    right: -4px;
+    border-left-color: #333;
+
+}
+
+.min-text-tip-item.is-right::after {
+    bottom: 50%;
+    transform: translateX(-50%) translateY(50%);
+    left: -4px;
+    border-right-color: #333;
+
+}

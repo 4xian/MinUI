@@ -1,0 +1,53 @@
+.text-tip-animation,
+.texttip-opacity-enter-active {
+  animation: open-texttip-opacity 0.5s;
+}
+
+.texttip-opacity-leave-active {
+  animation: close-texttip-opacity 0.5s;
+}
+
+@keyframes open-texttip-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes close-texttip-opacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.modal-fade-enter-active {
+  animation: open-modal-opacity 0.5s;
+}
+
+.modal-fade-leave-active {
+  animation: close-modal-opacity 0.5s;
+}
+
+@keyframes open-modal-opacity {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes close-modal-opacity {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}

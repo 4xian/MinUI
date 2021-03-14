@@ -7,6 +7,7 @@
     :class="[
       type ? `button-type-${type}` : '',
       btnClass,
+      className,
       simple ? `button-simple-${simple}` : '',
     ]"
   >
@@ -30,7 +31,7 @@ export default {
   props: {
     size: {
       type: [String, Number],
-      default: "1",
+      default: "",
     },
 
     type: {
@@ -39,7 +40,7 @@ export default {
     },
     borderRadius: {
       type: String,
-      default: "5px",
+      default: "",
     },
     disabled: {
       type: Boolean,
@@ -57,16 +58,26 @@ export default {
       type: String,
       default: "",
     },
+    className: {
+      type: String,
+      default: "",
+    },
   },
   computed: {
     btnStyle() {
       const { size, borderRadius, text } = this;
-      return {
-        fontSize: size ? this.handleFontSize : "12px",
-        padding: size ? this.handlePadding : "5px 10px",
-        borderRadius: borderRadius ? borderRadius : "3px",
-        color: text ? text : "",
-      };
+      const temp = {};
+      if (size) {
+        temp["fontSize"] = this.handleFontSize;
+        temp["padding"] = this.handlePadding;
+      }
+      if (borderRadius) {
+        temp["borderRadius"] = borderRadius;
+      }
+      if (text) {
+        temp["color"] = text;
+      }
+      return temp;
     },
     btnClass() {
       return {
@@ -76,7 +87,7 @@ export default {
       };
     },
     handleFontSize() {
-      return `${12 * this.size}px`;
+      return this.size <= 1 ? "" : `${12 * this.size}px`;
     },
     handlePadding() {
       return `${5 * this.size}px ${10 * this.size}px`;

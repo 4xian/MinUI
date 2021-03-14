@@ -11,7 +11,7 @@
   font-size: 12px;
   margin: 3px;
   border-radius: 5px;
-  font-family: 'Apple';
+  font-family: "Apple";
   background-color: #ddd;
 }
 
@@ -21,7 +21,6 @@
 
 .min-button:active {
   background-color: #ddd;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -37,7 +36,6 @@
 
 .button-type-blue:active {
   background-color: #007aff;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -53,7 +51,6 @@
 
 .button-type-red:active {
   background-color: #ff3b30;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -69,7 +66,6 @@
 
 .button-type-yellow:active {
   background-color: #ff9500;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -85,7 +81,6 @@
 
 .button-type-green:active {
   background-color: #51d267;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -174,7 +169,6 @@
 
 .button-simple-gray:active {
   background-color: #999;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -192,7 +186,6 @@
 
 .button-simple-blue:active {
   background-color: #007aff;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -210,7 +203,6 @@
 
 .button-simple-red:active {
   background-color: #ff3b30;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -228,7 +220,6 @@
 
 .button-simple-yellow:active {
   background-color: #f8aa3c;
-  -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 
@@ -246,7 +237,5 @@
 
 .button-simple-green:active {
   background-color: #9de7a9;
-  -webkit-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
 }
-/*# sourceMappingURL=button.css.map */

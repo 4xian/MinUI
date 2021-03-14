@@ -2,7 +2,7 @@
   <div id="app">
     <div class="test-btn">
       <min-button size="0.5" text="green">按钮</min-button>
-      <min-button simple="gray" size="0.5">Button</min-button>
+      <min-button simple="gray">Button</min-button>
       <min-button type="blue">默认按钮</min-button>
       <min-button>默认按钮</min-button>
       <min-button type="yellow">上一页</min-button>
@@ -91,21 +91,23 @@
       <!-- <min-text-tip>
         <min-button>默认按钮</min-button>
       </min-text-tip> -->
-      <min-text-tip position="left">
+      <min-text-tip position="left" :animation="false">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
         <min-button type="blue">默认按钮默认按钮</min-button>
       </min-text-tip>
-      <min-text-tip position="top">
+      <min-text-tip position="top" trigger="click" bgColor="orange">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
         <min-button type="blue">默认按钮默认按钮</min-button>
       </min-text-tip>
-      <min-text-tip position="bottom">
+      <min-text-tip position="bottom" trigger="click">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
         <min-button type="blue">默认按钮默认按钮</min-button>
       </min-text-tip>
       <min-text-tip position="right">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
-        <min-button type="blue" size="1.5">默认按钮默认按钮</min-button>
+        <min-button type="blue" size="1.5" @click="modal = true"
+          >默认按钮默认按钮</min-button
+        >
       </min-text-tip>
     </div>
 
@@ -129,6 +131,39 @@
       <min-line direction="vertical" color="orange" position="bottom">
       </min-line>
     </div>
+
+    <div class="test-modal">
+      <min-modal :visible.sync="modal" @open="open" @close="close">
+        <!-- <div slot="header">
+          这是标题这是标题
+        </div> -->
+        <div>
+          <input placeholder="输入内容" />
+          <!-- <min-modal :visible.sync="modal2">
+            内嵌弹框
+            <div slot="footer">
+              <min-button type="yellow" @click="close1">上一页</min-button>
+              <min-button type="red">下一页</min-button>
+            </div>
+          </min-modal> -->
+          What follows is just some placeholder text for this modal dialog.
+          Sipping on Rosé, Silver Lake sun, coming up all lazy. It’s in the palm
+          of your hand now baby. So we hit the boulevard. So make a wish, I'll
+          make it like your birthday everyday. Do you ever feel already buried
+          deep six feet under? It's time to bring out the big balloons. You
+          could've been the greatest. Passport stamps, she's cosmopolitan. Your
+          kiss is cosmic, every move is magic. We're living the life. We're
+          doing it right. Open up your heart. I was tryna hit it and quit it.
+          Her love is like a drug. Always leaves a trail of stardust. The girl's
+          a freak, she drive a jeep in Laguna Beach. Fine, fresh, fierce, we got
+          it on lock. All my girls vintage Chanel baby. Before
+        </div>
+        <!-- <div slot="footer">
+          <min-button type="yellow" @click="close">上一页</min-button>
+          <min-button type="red">下一页</min-button>
+        </div> -->
+      </min-modal>
+    </div>
   </div>
 </template>
 
@@ -139,9 +174,16 @@ import MinLink from "../packages/Link/src/link";
 import MinMark from "../packages/Mark/src/mark";
 import MinTextTip from "../packages/TextTip/src/textTip";
 import MinLine from "../packages/Line/src/line";
+import MinModal from "../packages/Modal/src/modal";
 
 export default {
   name: "App",
+  data() {
+    return {
+      modal: false,
+      modal2: true,
+    };
+  },
   components: {
     MinButton,
     MinTag,
@@ -149,6 +191,7 @@ export default {
     MinMark,
     MinTextTip,
     MinLine,
+    MinModal,
   },
   methods: {
     testBtn(e) {
@@ -159,6 +202,16 @@ export default {
     },
     testLink(e) {
       console.log(e);
+    },
+    open() {},
+    beforeClose(func) {
+      func();
+    },
+    close() {
+      this.modal = false;
+    },
+    close1() {
+      this.modal2 = false;
     },
   },
 };
@@ -195,5 +248,9 @@ export default {
   height: 100px;
   margin: 10px 0;
   width: 100%;
+}
+.test-modal {
+  width: 800px;
+  height: 200px;
 }
 </style>

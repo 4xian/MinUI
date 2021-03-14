@@ -4,6 +4,12 @@
     content: '';
 }
 
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
 .has-underline {
     text-decoration: underline;
 }
