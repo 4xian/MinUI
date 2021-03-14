@@ -65,7 +65,6 @@ export default {
     visible: {
       handler(val) {
         if (val) {
-          //   this.status = false;
           this.$emit("open");
         }
       },
