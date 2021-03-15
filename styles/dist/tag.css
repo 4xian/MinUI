@@ -3,7 +3,7 @@
   -webkit-box-sizing: border-box;
   display: inline-block;
   border: 1px solid #dcdcdc;
-  font-family: 'Apple';
+  font-family: "Apple";
   background-color: #ddd;
   border-radius: 4px;
   font-size: 12px;
@@ -80,4 +80,3 @@
   border-color: #ff9500;
   color: #ff9500;
 }
-/*# sourceMappingURL=tag.css.map */

@@ -24,19 +24,23 @@
     border-color: transparent;
 }
 
+.has-margin-right {
+    margin-right: 5px;
+}
+
 .min-icon-close {
-    border-radius: 50% 50%;
+    border-radius: 50%;
     text-align: center;
     cursor: pointer;
     font-size: inherit;
     box-sizing: border-box;
-    padding: 2px 4px;
+    padding: 2px 0px 2px 2px;
     /* line-height: 16px; */
     display: inline-block;
     vertical-align: middle;
 }
 
 .min-icon-close:hover {
-    background-color: red;
+    background: red;
     color: #fff;
 }

@@ -1,0 +1,34 @@
+.min-gotop {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  min-width: 40px;
+  min-height: 40px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0.25rem 0.75rem 0.25rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.25rem 0.75rem 0.25rem rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #007aff;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 11;
+}
+
+.min-gotop-default {
+  border-radius: 50%;
+  padding: 3px;
+  color: #007aff;
+}
+
+.min-gotop:hover {
+  background-color: #f2f2f2;
+}
+/*# sourceMappingURL=gotop.css.map */

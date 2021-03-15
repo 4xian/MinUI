@@ -104,6 +104,7 @@ export default {
       width: width ? width : "",
       "margin-top": top ? "top" : "",
     };
+
     const modalEle = (
       <transition name="modal-fade">
         {visible && (

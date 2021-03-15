@@ -15,7 +15,7 @@ export default {
   props: {
     size: {
       type: [String, Number],
-      default: "1",
+      default: "",
     },
 
     // 可改为任意背景色
@@ -46,8 +46,8 @@ export default {
     tagStyle() {
       const { size, text } = this;
       return {
-        fontSize: size ? this.handleFontSize : "12px",
-        padding: size ? this.handlePadding : "5px 10px",
+        fontSize: size ? this.handleFontSize : "",
+        padding: size ? this.handlePadding : "",
         color: text ? text : "",
       };
     },
@@ -92,11 +92,7 @@ export default {
     const MinTag = (
       <span onClick={tagClick} style={tagStyle} class={TagClass}>
         {$slots.default}
-        {this.close && (
-          <i class="min-icon-close" onClick={iconClose}>
-            X
-          </i>
-        )}
+        {this.close && <i class="min-icon-close" onClick={iconClose}></i>}
       </span>
     );
     return MinTag;

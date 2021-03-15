@@ -99,9 +99,9 @@
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
         <min-button type="blue">默认按钮默认按钮</min-button>
       </min-text-tip>
-      <min-text-tip position="bottom" trigger="click">
+      <min-text-tip position="bottom">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
-        <min-button type="blue">默认按钮默认按钮</min-button>
+        <min-button type="blue" @click="showToast">默认按钮默认按钮</min-button>
       </min-text-tip>
       <min-text-tip position="right">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
@@ -132,7 +132,7 @@
       </min-line>
     </div>
 
-    <div class="test-modal">
+    <div>
       <min-modal :visible.sync="modal" @open="open" @close="close">
         <!-- <div slot="header">
           这是标题这是标题
@@ -164,6 +164,24 @@
         </div> -->
       </min-modal>
     </div>
+
+    <div style="height:1500px">
+      What follows is just some placeholder text for this modal dialog. Sipping
+      on Rosé, Silver Lake sun, coming up all lazy. It’s in the palm of your
+      hand now baby. So we hit the boulevard. So make a wish, I'll make it like
+      your birthday everyday. Do you ever feel already buried deep six feet
+      under? It's time to bring out the big balloons. You could've been the
+      greatest. Passport stamps, she's cosmopolitan. Your
+      <min-icon name="right" />
+      <min-icon name="code" iconfont size="20" />
+      <i class="min-icon-success"></i>
+    </div>
+
+    <div>
+      <!-- <min-toast>消息提示框</min-toast> -->
+    </div>
+
+    <min-gotop @click="gotop"></min-gotop>
   </div>
 </template>
 
@@ -175,6 +193,9 @@ import MinMark from "../packages/Mark/src/mark";
 import MinTextTip from "../packages/TextTip/src/textTip";
 import MinLine from "../packages/Line/src/line";
 import MinModal from "../packages/Modal/src/modal";
+import MinIcon from "../packages/Icon/src/icon";
+// import MinToast from "../packages/Toast/src/toast";
+import MinGotop from "../packages/Gotop/src/gotop";
 
 export default {
   name: "App",
@@ -192,6 +213,9 @@ export default {
     MinTextTip,
     MinLine,
     MinModal,
+    MinIcon,
+    // MinToast,
+    MinGotop,
   },
   methods: {
     testBtn(e) {
@@ -212,6 +236,12 @@ export default {
     },
     close1() {
       this.modal2 = false;
+    },
+    showToast() {
+      this.$toast.success("测试内容");
+    },
+    gotop() {
+      this.$toast.success("点击了回到顶部");
     },
   },
 };
