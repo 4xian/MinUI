@@ -114,12 +114,10 @@ export default {
               style={modalStyle}
             >
               {showClose && (
-                <span
-                  class="min-modal-header-close"
+                <icon
+                  class="min-modal-header-close min-icon-close"
                   onClick={handleClickMaskClose}
-                >
-                  X
-                </span>
+                ></icon>
               )}
               {$slots.header ? (
                 <div

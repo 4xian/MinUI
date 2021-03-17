@@ -15,6 +15,7 @@ const trim = function (string) {
 const camelCase = function (name) {
     return name.replace(SPECIAL_CHARS_REGEXP, function (_, separator, letter, offset) {
         return offset ? letter.toUpperCase() : letter;
+
     }).replace(MOZ_HACK_REGEXP, 'Moz$1');
 };
 
@@ -120,6 +121,7 @@ export function removeClass(el, cls) {
 export const getStyle = ieVersion < 9 ? function (element, styleName) {
     if (isServer) return;
     if (!element || !styleName) return null;
+    console.log(styleName);
     styleName = camelCase(styleName);
     if (styleName === 'float') {
         styleName = 'styleFloat';

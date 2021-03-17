@@ -8,8 +8,8 @@
       <min-button type="yellow">上一页</min-button>
       <min-button type="red">下一页</min-button>
       <min-button type="green">默认按钮</min-button>
-      <min-button type="blue" size="1.2">
-        <i>@</i>
+      <min-button type="blue">
+        <i class="min-icon-top"></i>
       </min-button>
       <min-button type="red" size="2" @click="testBtn" disabled
         >Apple</min-button
@@ -184,11 +184,31 @@
     <min-gotop @click="gotop"></min-gotop>
 
     <div class="scroll-img">
-      <min-img
+      图片展示
+      <!-- <min-img
         src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg"
       >
-        <!-- <slot slot="fail">图片加载失败!</slot> -->
-      </min-img>
+        <slot slot="fail">图片加载失败!</slot>
+      </min-img> -->
+    </div>
+
+    <div>
+      无限数据滚动
+      <!-- <ul
+        class="infinite-list"
+        v-scroll-load="load"
+        scroll-load-disabled="disabled"
+        style="overflow:auto"
+      >
+        <li v-for="i in count" :key="i" class="infinite-list-item">{{ i }}</li>
+        <p v-if="loading">加载中...</p>
+        <p v-if="noMore">没有更多了</p>
+      </ul> -->
+    </div>
+
+    <div class="loading" v-loading="loading">
+      全屏加载中...
+      <!-- <min-loading></min-loading> -->
     </div>
   </div>
 </template>
@@ -204,7 +224,8 @@ import MinModal from "../packages/Modal/src/modal";
 import MinIcon from "../packages/Icon/src/icon";
 // import MinToast from "../packages/Toast/src/toast";
 import MinGotop from "../packages/Gotop/src/gotop";
-import MinImg from "../packages/Img/src/img";
+// import MinImg from "../packages/Img/src/img";
+// import MinLoading from "../packages/Loading/src/loading";
 
 export default {
   name: "App",
@@ -212,6 +233,7 @@ export default {
     return {
       modal: false,
       modal2: true,
+      loading: true,
       imgList: [
         "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
         "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
@@ -221,6 +243,7 @@ export default {
         "https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg",
         "https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg",
       ],
+      count: 5,
     };
   },
   components: {
@@ -234,7 +257,19 @@ export default {
     MinIcon,
     // MinToast,
     MinGotop,
-    MinImg,
+    // MinImg,
+    // MinLoading,
+  },
+  computed: {
+    noMore() {
+      return this.count >= 20;
+    },
+    disabled() {
+      return this.loading || this.noMore;
+    },
+  },
+  mounted() {
+    this.load();
   },
   methods: {
     testBtn(e) {
@@ -264,6 +299,13 @@ export default {
     },
     failImg(e) {
       console.log("加载图片错误!", e);
+    },
+    load() {
+      this.loading = true;
+      setTimeout(() => {
+        this.count += 2;
+        this.loading = false;
+      }, 1000);
     },
   },
 };
@@ -305,9 +347,20 @@ export default {
   width: 800px;
   height: 200px;
 }
-.scroll-img {
-  height: 400px;
-  width: 500px;
-  overflow: auto;
+
+.infinite-list {
+  width: 200px;
+  height: 200px;
+}
+.infinite-list-item {
+  margin: 5px 0;
+  background: red;
+}
+
+.loading {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  border: 1px solid orange;
 }
 </style>

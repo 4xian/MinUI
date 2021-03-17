@@ -153,6 +153,7 @@ function removeClass(el, cls) {
 var getStyle = ieVersion < 9 ? function (element, styleName) {
   if (isServer) return;
   if (!element || !styleName) return null;
+  console.log(styleName);
   styleName = camelCase(styleName);
 
   if (styleName === 'float') {

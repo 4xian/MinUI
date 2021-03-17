@@ -48,23 +48,11 @@
             right: 10px;
             top: 10px;
             font-size: 14px;
-
-            &:hover {
-                color: red;
-
-                &::after {
-                    width: 20px;
-                    position: absolute;
-                    top: -8px;
-                    right: 10px;
-                    content: '关闭';
-                }
-            }
         }
     }
 
     &-content {
-        padding: 10px;
+        padding: 10px 20px;
         text-align: inherit;
     }
 
