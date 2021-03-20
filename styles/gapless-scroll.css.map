@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EACd,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,QAAQ,EAAE,MAAM;EAChB,MAAM,EAAE,aAAa;CACxB",
+    "sources": [
+        "gapless-scroll.scss"
+    ],
+    "names": [],
+    "file": "gapless-scroll.css"
+}

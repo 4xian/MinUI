@@ -12,6 +12,8 @@
 @import '../styles/gotop.css';
 @import '../styles/img.css';
 @import '../styles/loading.css';
+@import '../styles/loop.css';
+@import '../styles/gapless-scroll.css';
 
 body {
   margin: 0;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="test-btn">
+    <!-- <div class="test-btn">
       <min-button size="0.5" text="green">按钮</min-button>
       <min-button simple="gray">Button</min-button>
       <min-button type="blue">默认按钮</min-button>
@@ -88,9 +88,6 @@
       </min-mark>
     </div>
     <div class="test-tag">
-      <!-- <min-text-tip>
-        <min-button>默认按钮</min-button>
-      </min-text-tip> -->
       <min-text-tip position="left" :animation="false">
         <div slot="content">我是一个提示<br />我是一个提示我是一个提示</div>
         <min-button type="blue">默认按钮默认按钮</min-button>
@@ -115,12 +112,10 @@
       <min-line position="left">
         start
       </min-line>
-      <!-- <span>这是尼日尔</span> -->
       <min-line color="red">
         center
       </min-line>
       <min-line color="red"> </min-line>
-      <!-- <span>这是尼日尔</span> -->
       <min-line position="right" color="blue">
         end
       </min-line>
@@ -130,7 +125,7 @@
       <span>这是部分内容</span>
       <min-line direction="vertical" color="orange" position="bottom">
       </min-line>
-    </div>
+    </div> -->
 
     <div>
       <min-modal :visible.sync="modal" @open="open" @close="close">
@@ -206,26 +201,57 @@
       </ul> -->
     </div>
 
-    <div class="loading" v-loading="loading">
+    <div>
       全屏加载中...
       <!-- <min-loading></min-loading> -->
+    </div>
+
+    <div>
+      <min-gapless-scroll :options="options">
+        <div class="scroll-box">
+          <span class="scroll-test"
+            >开始开始ceshisdhfshfslhgsilhf不代发费a结束结束</span
+          >
+          <div class="scroll-img">
+            <min-img
+              src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg"
+              width="100"
+              height="100"
+            >
+            </min-img>
+          </div>
+
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容1</span>
+          <span class="scroll-test">此为滚动内容2222222</span>
+        </div>
+      </min-gapless-scroll>
     </div>
   </div>
 </template>
 
 <script>
-import MinButton from "../packages/Button/src/button";
+/* import MinButton from "../packages/Button/src/button";
 import MinTag from "../packages/Tag/src/tag";
 import MinLink from "../packages/Link/src/link";
 import MinMark from "../packages/Mark/src/mark";
 import MinTextTip from "../packages/TextTip/src/textTip";
-import MinLine from "../packages/Line/src/line";
+import MinLine from "../packages/Line/src/line"; */
 import MinModal from "../packages/Modal/src/modal";
 import MinIcon from "../packages/Icon/src/icon";
 // import MinToast from "../packages/Toast/src/toast";
 import MinGotop from "../packages/Gotop/src/gotop";
-// import MinImg from "../packages/Img/src/img";
+import MinImg from "../packages/Img/src/img";
 // import MinLoading from "../packages/Loading/src/loading";
+import MinGaplessScroll from "../packages/GaplessScroll/src/gapless-scroll";
 
 export default {
   name: "App",
@@ -244,21 +270,27 @@ export default {
         "https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg",
       ],
       count: 5,
+      options: {
+        direction: "down",
+        // speed: 1,
+        hoverStop: true,
+      },
     };
   },
   components: {
-    MinButton,
+    /* MinButton,
     MinTag,
     MinLink,
     MinMark,
     MinTextTip,
-    MinLine,
+    MinLine, */
     MinModal,
     MinIcon,
     // MinToast,
     MinGotop,
-    // MinImg,
+    MinImg,
     // MinLoading,
+    MinGaplessScroll,
   },
   computed: {
     noMore() {
@@ -269,7 +301,7 @@ export default {
     },
   },
   mounted() {
-    this.load();
+    // this.load();
   },
   methods: {
     testBtn(e) {
@@ -362,5 +394,23 @@ export default {
   height: 300px;
   text-align: center;
   border: 1px solid orange;
+}
+
+.scroll-box {
+  /* width: 600px; */
+}
+.scroll-test {
+  line-height: 50px;
+  display: block;
+  margin: 10px 0;
+  border: 1px solid orange;
+  /* text-align: left; */
+  white-space: nowrap;
+  /* width: auto; */
+}
+.scroll-img {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 </style>
