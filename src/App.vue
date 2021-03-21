@@ -207,20 +207,25 @@
     </div>
 
     <div>
-      <min-gapless-scroll :options="options">
+      <min-gapless-scroll :options="options" width="140" height="400">
         <div class="scroll-box">
-          <span class="scroll-test"
-            >开始开始ceshisdhfshfslhgsilhf不代发费a结束结束</span
-          >
-          <div class="scroll-img">
+          <ul class="item">
+            <li v-for="item in listData" :key="item">{{ item }}</li>
+          </ul>
+
+          <!-- <span class="scroll-test"
+            >开始开始ceshisdhfshfslhgsil不代发费a结束结束</span
+          > -->
+          <!-- <div class="scroll-img">
             <min-img
               src="https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg"
               width="100"
               height="100"
             >
             </min-img>
-          </div>
+          </div> -->
 
+          <!-- <span class="scroll-test">此为滚动内容1</span>
           <span class="scroll-test">此为滚动内容1</span>
           <span class="scroll-test">此为滚动内容1</span>
           <span class="scroll-test">此为滚动内容1</span>
@@ -230,8 +235,7 @@
           <span class="scroll-test">此为滚动内容1</span>
           <span class="scroll-test">此为滚动内容1</span>
           <span class="scroll-test">此为滚动内容1</span>
-          <span class="scroll-test">此为滚动内容1</span>
-          <span class="scroll-test">此为滚动内容2222222</span>
+          <span class="scroll-test">此为滚动内容2222222</span> -->
         </div>
       </min-gapless-scroll>
     </div>
@@ -249,7 +253,7 @@ import MinModal from "../packages/Modal/src/modal";
 import MinIcon from "../packages/Icon/src/icon";
 // import MinToast from "../packages/Toast/src/toast";
 import MinGotop from "../packages/Gotop/src/gotop";
-import MinImg from "../packages/Img/src/img";
+// import MinImg from "../packages/Img/src/img";
 // import MinLoading from "../packages/Loading/src/loading";
 import MinGaplessScroll from "../packages/GaplessScroll/src/gapless-scroll";
 
@@ -271,10 +275,15 @@ export default {
       ],
       count: 5,
       options: {
-        direction: "down",
+        direction: "up",
         // speed: 1,
+        interval: 1000,
+        step: 130,
+        autoScroll: false,
+        controlIcon: true,
         hoverStop: true,
       },
+      listData: [1, 2, 3, 4, 5, 6, 7, 8],
     };
   },
   components: {
@@ -288,7 +297,7 @@ export default {
     MinIcon,
     // MinToast,
     MinGotop,
-    MinImg,
+    // MinImg,
     // MinLoading,
     MinGaplessScroll,
   },
@@ -397,14 +406,16 @@ export default {
 }
 
 .scroll-box {
-  /* width: 600px; */
+  /* width: 1120px; */
+  height: auto;
+  /* overflow: hidden; */
 }
 .scroll-test {
   line-height: 50px;
   display: block;
   margin: 10px 0;
   border: 1px solid orange;
-  /* text-align: left; */
+  text-align: left;
   white-space: nowrap;
   /* width: auto; */
 }
@@ -412,5 +423,32 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+ul.item {
+  /* width: 100%; */
+
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+ul.item::after {
+  display: block;
+  contain: "";
+  clear: both;
+}
+ul.item li {
+  /* float: left; */
+  /* display: inline-block; */
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+  line-height: 120px;
+  background-color: #999;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
 }
 </style>

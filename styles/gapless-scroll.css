@@ -3,5 +3,58 @@
   height: 300px;
   overflow: hidden;
   border: 1px solid red;
+  position: relative;
+}
+
+.min-gapless-scroll {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.min-gapless {
+  position: absolute;
+  font-size: 30px;
+  border-radius: 50%;
+  background-color: #666;
+  color: #fff;
+  z-index: 10;
+}
+
+.min-gapless-lefticon {
+  left: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.min-gapless-righticon {
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.min-gapless-upicon {
+  top: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.min-gapless-downicon {
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.min-gapless:hover {
+  background-color: #ff3b30;
 }
 /*# sourceMappingURL=gapless-scroll.css.map */

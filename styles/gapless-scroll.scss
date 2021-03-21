@@ -3,4 +3,53 @@
     height: 300px;
     overflow: hidden;
     border: 1px solid red;
+    position: relative;
+}
+
+.min-gapless-scroll {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    // overflow: hidden !important;
+}
+
+.min-gapless {
+
+    position: absolute;
+    font-size: 30px;
+    border-radius: 50%;
+    background-color: #666;
+    color: #fff;
+    z-index: 10;
+
+    &-lefticon {
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &-righticon {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &-upicon {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &-downicon {
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:hover {
+
+        background-color: #ff3b30;
+    }
+
+
 }
