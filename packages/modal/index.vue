@@ -1,11 +1,9 @@
 <script>
-/* 
+/*
     弹框:
     props:{
-
     }
 */
-
 export default {
   name: "MinModal",
   data() {
@@ -28,7 +26,15 @@ export default {
     },
     beforeClose: Function,
     className: {
-      type: String,
+      type: [String, Array],
+      default: "",
+    },
+    contentClass: {
+      type: [String, Array],
+      default: "",
+    },
+    rootName: {
+      type: [String, Array],
       default: "",
     },
     fullscreen: {
@@ -94,6 +100,8 @@ export default {
       $slots,
       handleClickMaskClose,
       className,
+      rootName,
+      contentClass,
       fullscreen,
       width,
       top,
@@ -104,55 +112,74 @@ export default {
       width: width ? width : "",
       "margin-top": top ? "top" : "",
     };
-
     const modalEle = (
-      <transition name="modal-fade">
+      <div>
         {visible && (
-          <div class={["min-modal-common"]}>
-            <div
-              class={["min-modal", className, { "is-fullscreen": fullscreen }]}
-              style={modalStyle}
-            >
-              {showClose && (
+          <div
+            class={[{ "min-modal-mask": mask }]}
+            onClick={handleClickMaskClose}
+          ></div>
+        )}
+        <transition name="modal-transition">
+          {visible && (
+            <div class={["min-modal-common", rootName]}>
+              <div
+                class={[
+                  "min-modal",
+                  className,
+                  { "is-fullscreen": fullscreen },
+                ]}
+                style={modalStyle}
+              >
+                {/* showClose && (
                 <icon
                   class="min-modal-header-close min-icon-close"
                   onClick={handleClickMaskClose}
                 ></icon>
-              )}
-              {$slots.header ? (
+              ) */}
+                {$slots.header ? (
+                  <div
+                    class={[
+                      "min-modal-header",
+                      { "is-text-center": textCenter },
+                    ]}
+                  >
+                    {$slots.header}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div
-                  class={["min-modal-header", { "is-text-center": textCenter }]}
+                  class={[
+                    "min-modal-content",
+                    contentClass,
+                    { "is-text-center": textCenter },
+                  ]}
                 >
-                  {$slots.header}
+                  {$slots.default}
                 </div>
-              ) : (
-                ""
-              )}
-              <div
-                class={["min-modal-content", { "is-text-center": textCenter }]}
-              >
-                {$slots.default}
+                {$slots.footer ? (
+                  <div
+                    class={[
+                      "min-modal-footer",
+                      { "is-text-center": textCenter },
+                    ]}
+                  >
+                    {$slots.footer}
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
-              {$slots.footer ? (
-                <div
-                  class={["min-modal-footer", { "is-text-center": textCenter }]}
-                >
-                  {$slots.footer}
-                </div>
-              ) : (
-                ""
-              )}
             </div>
-
-            <div
-              class={[{ "min-modal-mask": mask }]}
-              onClick={handleClickMaskClose}
-            ></div>
-          </div>
-        )}
-      </transition>
+          )}
+        </transition>
+      </div>
     );
     return modalEle;
   },
 };
 </script>
+<style scoped lang="less">
+@import "./index.less";
+</style>
