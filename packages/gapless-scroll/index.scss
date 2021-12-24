@@ -1,0 +1,51 @@
+.min-gapless-wrap {
+  position: relative;
+  overflow: hidden;
+
+  .scroll-empty {
+    height: 100%;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scroll-controls {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  .left-controls {
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  .right-controls {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+  .up-controls {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .down-controls {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .scroll-content-box {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .gapless-scroll-content {
+    display: flex;
+    height: 100%;
+  }
+}

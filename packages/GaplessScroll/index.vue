@@ -1,6 +1,4 @@
 <script>
-// import "@/assets/utils/requestAnimationFrame";
-// import { copyObject } from "../../../src/utils/copy-object";
 import "./index.scss";
 import _ from "lodash";
 export default {
@@ -42,19 +40,14 @@ export default {
       type: [String, Number],
       default: 300,
     },
-    // 是否为图片轮播
-    carousel: {
-      type: Boolean,
-      default: false,
-    },
     marginBias: {
       type: [Number],
       default: 0,
     },
-    // true为左右按钮点击,false为无缝滚动
-    isClick: {
-      type: Boolean,
-      default: false,
+    // 0:无缝滚动 1: 带点击事件的滚动(非无缝) 2: 左右点击
+    scrollType: {
+      type: Number,
+      default: 0,
     },
     list: {
       type: Array,
@@ -74,6 +67,11 @@ export default {
       type: String,
       default: "",
     },
+    // 空图片大小
+    emptySrcWidth: {
+      type: [String, Number],
+      default: "30%",
+    },
   },
   computed: {
     WarpStyle() {
@@ -92,24 +90,6 @@ export default {
     handleOptions() {
       return _.assign({}, this.initOptions, this.options);
     },
-    // isVerticalScroll() {
-    //     let tempContent = this.$refs.scrollContent,
-    //         tempWarp = this.$refs.warp;
-    //     return (
-    //         tempContent.offsetHeight > tempWarp.offsetHeight &&
-    //         tempContent.offsetWidth <= tempWarp.offsetWidth
-    //     );
-    // },
-    // isHorizontalScroll() {
-    //     let tempContent = this.$refs.scrollContent,
-    //         tempWarp = this.$refs.warp;
-
-    //     return (
-    //         tempContent.scrollWidth >
-    //             tempWarp.offsetWidth + this.marginBias &&
-    //         tempContent.offsetHeight <= tempWarp.offsetHeight
-    //     );
-    // },
     isHorizontal() {
       return (
         this.options.direction === "left" || this.options.direction === "right"
@@ -124,7 +104,7 @@ export default {
   watch: {
     list: {
       handler(newVal, old = []) {
-        if (newVal.length !== old.length && newVal.length > 0) {
+        if (newVal.length !== old.length && newVal.length) {
           this.cancelMove();
           this.offsetX = 0;
           this.offsetY = 0;
@@ -144,40 +124,33 @@ export default {
     this.reqAnimationTimer = null;
   },
   mounted() {
-    // this.$nextTick(() => {
-    //   this.h = this.$refs.scrollContent.offsetHeight;
-    //   this.w = this.$refs.scrollContent.scrollWidth;
-    // });
-    this.$once("hook:beforeDestory", () => {
+    this.$once("hook:beforeDestroy", () => {
       this.cancelMove();
       clearTimeout(this.timer);
     });
   },
-  //   beforeDestroy() {},
   methods: {
     isVerticalScroll() {
       let tempContent = this.$refs.scrollContent,
         tempWarp = this.$refs.warp;
-      // console.log(tempContent.offsetHeight, tempWarp.offsetHeight);
-      return (
-        tempContent.offsetHeight > tempWarp.offsetHeight &&
-        tempContent.offsetWidth <= tempWarp.offsetWidth
-      );
+      return tempWarp
+        ? tempContent.offsetHeight > tempWarp.offsetHeight &&
+            tempContent.offsetWidth <= tempWarp.offsetWidth
+        : false;
     },
     isHorizontalScroll() {
       let tempContent = this.$refs.scrollContent,
         tempWarp = this.$refs.warp;
 
-      return (
-        tempContent.scrollWidth > tempWarp.offsetWidth + this.marginBias &&
-        tempContent.offsetHeight <= tempWarp.offsetHeight
-      );
+      return tempWarp
+        ? tempContent.scrollWidth > tempWarp.offsetWidth + this.marginBias &&
+            tempContent.offsetHeight <= tempWarp.offsetHeight
+        : false;
     },
     init() {
       this.h = this.$refs.scrollContent.offsetHeight;
       this.w = this.$refs.scrollContent.scrollWidth;
       if (this.handleOptions.autoScroll) {
-        // console.log(this.isVerticalScroll, this.isHorizontalScroll);
         if (this.isVerticalScroll() || this.isHorizontalScroll()) {
           this.startMove();
         } else {
@@ -198,10 +171,18 @@ export default {
         // 垂直滚动
         if (this.isVerticalScroll()) {
           if (direction === "up") {
-            if (this.offsetY >= h) {
-              this.offsetY = 0;
+            if (this.scrollType === 1) {
+              if (this.offsetY >= h - this.height) {
+                this.offsetY = 0;
+              } else {
+                this.offsetY += speed;
+              }
             } else {
-              this.offsetY += speed;
+              if (this.offsetY >= h) {
+                this.offsetY = 0;
+              } else {
+                this.offsetY += speed;
+              }
             }
           } else if (direction === "down") {
             if (this.offsetY < h - this.height) {
@@ -210,14 +191,21 @@ export default {
             this.offsetY -= speed;
           }
         }
-        // console.log(1);
         // 水平滚动
         if (this.isHorizontalScroll()) {
           if (direction === "left") {
-            if (this.offsetX > w) {
-              this.offsetX = 0;
+            if (this.scrollType === 1) {
+              if (this.offsetX > w - this.width) {
+                this.offsetX = 0;
+              } else {
+                this.offsetX += speed;
+              }
             } else {
-              this.offsetX += speed;
+              if (this.offsetX > w) {
+                this.offsetX = 0;
+              } else {
+                this.offsetX += speed;
+              }
             }
           } else if (direction === "right") {
             if (this.offsetX < w - this.width) {
@@ -346,8 +334,9 @@ export default {
       list,
       emptyText,
       emptySrc,
-      isClick,
+      scrollType,
       isShowCopy,
+      emptySrcWidth,
     } = this;
     let icon;
     if (isHorizontal) {
@@ -394,7 +383,7 @@ export default {
     }
     const scrollEle = (
       <div class="min-gapless-warp" ref="warp" style={WarpStyle}>
-        <div v-show={list.length > 0} style={{ height: "100%" }}>
+        <div v-show={list.length > 0} style="height:100%">
           {icon}
           <div
             ref="scrollContent"
@@ -416,24 +405,14 @@ export default {
             >
               {$slots.default}
             </div>
-            {!isClick && isShowCopy && (
-              <div
-                style={[
-                  isVertical
-                    ? { overflow: "hidden" }
-                    : {
-                        display: "flex",
-                        "flex-direction": "row",
-                      },
-                ]}
-                domPropsInnerHTML={$refs.scrollList.innerHTML}
-              ></div>
+            {scrollType === 0 && isShowCopy && (
+              <div domPropsInnerHTML={$refs.scrollList.innerHTML}></div>
             )}
           </div>
         </div>
         {list.length === 0 && (
           <div class="empty-content">
-            <img src={emptySrc} />
+            <img style={{ width: emptySrcWidth }} src={emptySrc} />
             <p>{emptyText}</p>
           </div>
         )}
